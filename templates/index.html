@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+
+    <!-- Connect CSS File -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🏠 House Price Prediction</h1>
+    <p>Fill in the details to predict house price</p>
+
+    <form method="POST" action="/predict">
+
+        <label>Area (sq ft):</label>
+        <input type="number" step="0.01" name="area" required>
+
+        <label>Bedrooms:</label>
+        <input type="number" name="bedrooms" required>
+
+        <label>Bathrooms:</label>
+        <input type="number" name="bathrooms" required>
+
+        <label>Stories:</label>
+        <input type="number" name="stories" required>
+
+        <label>Main Road:</label>
+        <select name="mainroad">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <label>Guest Room:</label>
+        <select name="guestroom">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <label>Basement:</label>
+        <select name="basement">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <label>Hot Water Heating:</label>
+        <select name="hotwaterheating">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <label>Air Conditioning:</label>
+        <select name="airconditioning">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+
+        <label>Parking:</label>
+        <input type="number" name="parking" required>
+
+        <input type="submit" value="Predict Price">
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+
+             <footer>Powered by Rohit</footer> 
+
+</div>
+
+</body>
+</html>
